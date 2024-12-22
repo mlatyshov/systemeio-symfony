@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PaymentServiceController
 {
@@ -16,6 +17,8 @@ class PaymentServiceController
         private PriceCalculator $priceCalculator,
         private PaymentProcessorFactory $paymentProcessorFactory
     ) {}
+
+    #[Route('/purchase', name: 'purchase', methods: ['POST'])]
 
     public function purchase(
         Request $request,

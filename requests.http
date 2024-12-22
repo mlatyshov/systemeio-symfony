@@ -1,4 +1,4 @@
-### Calculate Price
+### Calculate Price 1
 POST http://127.0.0.1:8337/calculate-price
 Accept: application/json
 Content-Type: application/json
@@ -6,17 +6,74 @@ Content-Type: application/json
 {
   "product": 1,
   "taxNumber": "DE123456789",
-  "couponCode": "D15"
+  "couponCode": "F5"
 }
 
-### Execute Purchase
+# HTTP/1.1 200 OK
+# Host: 127.0.0.1:8337
+# {
+#   "productPrice": 100,
+#   "discountedPrice": 95,
+#   "taxRate": 19,
+#   "taxAmount": 18.05,
+#   "finalPrice": 113.05
+# }
+
+### Calculate Price 2
+POST http://127.0.0.1:8337/calculate-price
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 2,
+  "taxNumber": "IT11223344556",
+  "couponCode": "P10"
+}
+
+# HTTP/1.1 200 OK
+# Host: 127.0.0.1:8337
+# {
+#   "productPrice": 20,
+#   "discountedPrice": 18,
+#   "taxRate": 22,
+#   "taxAmount": 3.96,
+#   "finalPrice": 21.96
+# }
+
+### Execute Purchase 1
 POST http://127.0.0.1:8337/purchase
 Accept: application/json
 Content-Type: application/json
 
 {
-  "product": 1,
+  "product": 2,
   "taxNumber": "IT12345678900",
-  "couponCode": "D15",
+  "couponCode": "P10",
   "paymentProcessor": "paypal"
 }
+
+# HTTP/1.1 200 OK
+# Host: 127.0.0.1:8337
+# {
+#   "message": "Payment successful",
+#   "amount": 21.96
+# }
+
+### Execute Purchase 2
+POST http://127.0.0.1:8337/purchase
+Accept: application/json
+Content-Type: application/json
+
+{
+  "product": 2,
+  "taxNumber": "IT12345678900",
+  "couponCode": "P10",
+  "paymentProcessor": "stripe"
+}
+
+# HTTP/1.1 200 OK
+# Host: 127.0.0.1:8337
+# {
+#   "message": "Payment successful",
+#   "amount": 21.96
+# }

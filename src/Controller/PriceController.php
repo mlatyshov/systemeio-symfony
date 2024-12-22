@@ -8,10 +8,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PriceController
 {
     public function __construct(private PriceCalculator $priceCalculator) {}
+
+    #[Route('/calculate-price', name: 'calculate_price', methods: ['POST'])]
 
     public function calculatePrice(
         Request $request,

@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use SystemeIo\TestForCandidates\StripePaymentProcessor;
+use Systemeio\TestForCandidates\PaymentProcessor\StripePaymentProcessor;
 
 class StripeProcessorAdapter implements PaymentProcessorInterface
 {

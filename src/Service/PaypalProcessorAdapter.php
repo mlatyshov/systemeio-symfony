@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use SystemeIo\TestForCandidates\PaypalPaymentProcessor;
+use Systemeio\TestForCandidates\PaymentProcessor\PaypalPaymentProcessor;
 
 class PaypalProcessorAdapter implements PaymentProcessorInterface
 {
