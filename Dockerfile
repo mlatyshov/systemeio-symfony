@@ -1,6 +1,8 @@
 FROM php:8.3-cli-alpine as sio_test
 RUN apk add --no-cache git zip bash
 
+RUN apk add --no-cache git zip bash postgresql-client
+
 # Setup php extensions
 RUN apk add --no-cache postgresql-dev \
     && docker-php-ext-install pdo_pgsql pdo_mysql
